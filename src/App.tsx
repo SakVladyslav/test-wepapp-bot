@@ -16,24 +16,6 @@ function App() {
 
     useEffect(() => {
         tg.ready();
-        tg.expand();
-    }, []);
-
-    const onSendData = useCallback(() => {
-        tg.sendData('123');
-    }, []);
-
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData]);
-
-    useEffect(() => {
-        tg.MainButton.setParams({
-            text: 'DATA TEST'
-        })
     }, []);
 
     const navigateToSecondPage = useCallback(() => {

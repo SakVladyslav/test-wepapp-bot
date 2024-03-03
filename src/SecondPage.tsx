@@ -1,19 +1,18 @@
 import {Button} from "react-bootstrap";
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
 const tg = window.Telegram.WebApp;
 
 const SecondPage = () => {
     const navigate = useNavigate();
-    const [subject, setSubject] = useState('physical');
 
     const onSendData = useCallback(() => {
         const data = {
-            subject
+            yellow: 'yellow'
         }
         tg.sendData(JSON.stringify(data));
-    }, [subject]);
+    }, []);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);

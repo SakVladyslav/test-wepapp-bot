@@ -1,9 +1,11 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Button, Stack} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
+
+const telWebApp = window.Telegram.WebApp;
 
 function App() {
     const navigate = useNavigate();
@@ -11,6 +13,12 @@ function App() {
     const [userData, setUserData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+
+    useEffect(() => {
+        telWebApp.ready();
+        telWebApp.expand();
+        telWebApp.sendData('123');
+    }, []);
 
     const navigateToSecondPage = useCallback(() => {
         navigate('/second-page');
